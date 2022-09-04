@@ -6,6 +6,7 @@ import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-co
 import { join } from 'path';
 import { PrismaModule } from './prisma/prisma.module';
 import { IngredientModule } from './ingredient/ingredient.module';
+import { RecipeModule } from './recipe/recipe.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { IngredientModule } from './ingredient/ingredient.module';
     }),
     PrismaModule,
     IngredientModule,
+    RecipeModule,
   ],
   providers: [PrismaService],
 })

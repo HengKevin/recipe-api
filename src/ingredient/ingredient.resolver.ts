@@ -1,7 +1,9 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import {
+  CreateIngredientInput,
+  UpdateIngredientInput,
+} from 'src/types/graphql';
 import { IngredientService } from './ingredient.service';
-import { CreateIngredientInput } from './dto/create-ingredient.input';
-import { UpdateIngredientInput } from './dto/update-ingredient.input';
 
 @Resolver('Ingredient')
 export class IngredientResolver {

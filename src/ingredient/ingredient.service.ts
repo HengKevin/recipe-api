@@ -1,26 +1,44 @@
 import { Injectable } from '@nestjs/common';
-import { CreateIngredientInput } from './dto/create-ingredient.input';
-import { UpdateIngredientInput } from './dto/update-ingredient.input';
+import { PrismaService } from 'src/prisma/prisma.service';
+import {
+  CreateIngredientInput,
+  UpdateIngredientInput,
+} from 'src/types/graphql';
 
 @Injectable()
 export class IngredientService {
+  constructor(private prisma: PrismaService) {}
   create(createIngredientInput: CreateIngredientInput) {
-    return 'This action adds a new ingredient';
+    return this.prisma.ingredient.create({
+      data: {
+        ...createIngredientInput,
+      },
+    });
   }
 
   findAll() {
-    return `This action returns all ingredient`;
+    return this.prisma.ingredient.findMany();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} ingredient`;
+    return this.prisma.ingredient.findUnique({
+      where: { id },
+      select: { name: true, quantity: true, quantityType: true },
+    });
   }
 
   update(id: number, updateIngredientInput: UpdateIngredientInput) {
-    return `This action updates a #${id} ingredient`;
+    return this.prisma.ingredient.update({
+      where: { id },
+      data: {
+        ...updateIngredientInput,
+      },
+    });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} ingredient`;
+    return this.prisma.ingredient.delete({
+      where: { id },
+    });
   }
 }
