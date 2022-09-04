@@ -9,6 +9,7 @@ input CreateIngredientInput {
   name: String!
   quantity: String!
   quantityType: String!
+  recipeId: Int!
 }
 
 input UpdateIngredientInput {

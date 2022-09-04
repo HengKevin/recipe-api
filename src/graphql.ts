@@ -20,6 +20,12 @@ export class UpdateIngredientInput {
     quantity: string;
 }
 
+export class CreateRecipeInput {
+    name: string;
+    instructions: string;
+    imageUrl: string;
+}
+
 export class Ingredient {
     id: number;
     name: string;
@@ -31,6 +37,10 @@ export abstract class IQuery {
     abstract ingredients(): Nullable<Ingredient>[] | Promise<Nullable<Ingredient>[]>;
 
     abstract ingredient(id: number): Nullable<Ingredient> | Promise<Nullable<Ingredient>>;
+
+    abstract recipes(): Nullable<Recipe>[] | Promise<Nullable<Recipe>[]>;
+
+    abstract recipe(id: number): Nullable<Recipe> | Promise<Nullable<Recipe>>;
 }
 
 export abstract class IMutation {
@@ -39,6 +49,20 @@ export abstract class IMutation {
     abstract updateIngredient(updateIngredientInput: UpdateIngredientInput): Ingredient | Promise<Ingredient>;
 
     abstract removeIngredient(id: number): Nullable<Ingredient> | Promise<Nullable<Ingredient>>;
+
+    abstract createRecipe(createRecipeInput: CreateRecipeInput): Recipe | Promise<Recipe>;
+
+    abstract removeRecipe(id: number): Nullable<Recipe> | Promise<Nullable<Recipe>>;
+}
+
+export class Recipe {
+    id: number;
+    name: string;
+    instructions: string;
+    imageUrl: string;
+    createdAt: string;
+    updatedAt: string;
+    ingredients: Ingredient[];
 }
 
 type Nullable<T> = T | null;

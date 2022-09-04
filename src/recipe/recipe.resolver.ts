@@ -1,7 +1,6 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { CreateRecipeInput } from 'src/graphql';
 import { RecipeService } from './recipe.service';
-import { CreateRecipeInput } from './dto/create-recipe.input';
-import { UpdateRecipeInput } from './dto/update-recipe.input';
 
 @Resolver('Recipe')
 export class RecipeResolver {
@@ -12,7 +11,7 @@ export class RecipeResolver {
     return this.recipeService.create(createRecipeInput);
   }
 
-  @Query('recipe')
+  @Query('recipes')
   findAll() {
     return this.recipeService.findAll();
   }
@@ -20,11 +19,6 @@ export class RecipeResolver {
   @Query('recipe')
   findOne(@Args('id') id: number) {
     return this.recipeService.findOne(id);
-  }
-
-  @Mutation('updateRecipe')
-  update(@Args('updateRecipeInput') updateRecipeInput: UpdateRecipeInput) {
-    return this.recipeService.update(updateRecipeInput.id, updateRecipeInput);
   }
 
   @Mutation('removeRecipe')

@@ -3,6 +3,6 @@ import { RecipeService } from './recipe.service';
 import { RecipeResolver } from './recipe.resolver';
 
 @Module({
-  providers: [RecipeResolver, RecipeService]
+  providers: [RecipeResolver, RecipeService],
 })
 export class RecipeModule {}
