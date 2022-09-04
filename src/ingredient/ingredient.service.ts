@@ -8,10 +8,13 @@ import {
 @Injectable()
 export class IngredientService {
   constructor(private prisma: PrismaService) {}
-  create(createIngredientInput: CreateIngredientInput) {
+  create({ name, quantity, quantityType, recipeId }: CreateIngredientInput) {
     return this.prisma.ingredient.create({
       data: {
-        ...createIngredientInput,
+        name,
+        quantity,
+        quantityType,
+        recipeId,
       },
     });
   }

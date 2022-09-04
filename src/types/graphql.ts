@@ -11,6 +11,7 @@ export class CreateIngredientInput {
     name: string;
     quantity: string;
     quantityType: string;
+    recipeId: number;
 }
 
 export class UpdateIngredientInput {

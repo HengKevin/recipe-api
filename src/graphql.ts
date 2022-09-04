@@ -12,6 +12,7 @@ export class CreateIngredientInput {
     name: string;
     quantity: string;
     quantityType: string;
+    recipeId?: Nullable<number>;
 }
 
 export class UpdateIngredientInput {
