@@ -25,6 +25,7 @@ type Query {
 
 type Mutation {
   createIngredient(createIngredientInput: CreateIngredientInput!): Ingredient!
+  createIngredients(createIngrediensInput: [CreateIngredientInput!]!): [Ingredient]!
   updateIngredient(updateIngredientInput: UpdateIngredientInput!): Ingredient!
   removeIngredient(id: Int!): Ingredient
 }

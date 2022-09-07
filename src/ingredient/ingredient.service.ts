@@ -19,6 +19,12 @@ export class IngredientService {
     });
   }
 
+  createMany(createIngredientInputs: CreateIngredientInput[]) {
+    return this.prisma.ingredient.createMany({
+      data: createIngredientInputs,
+    });
+  }
+
   findAll() {
     return this.prisma.ingredient.findMany();
   }

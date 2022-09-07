@@ -12,6 +12,14 @@ input CreateRecipeInput {
   name: String!
   instructions: String!
   imageUrl: String!
+  ingredients: [IngredientsInput!]!
+}
+
+input IngredientsInput {
+  name: String!
+  quantity: String!
+  quantityType: String!
+  recipeId: Int
 }
 
 type Query {

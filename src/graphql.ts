@@ -25,6 +25,14 @@ export class CreateRecipeInput {
     name: string;
     instructions: string;
     imageUrl: string;
+    ingredients: IngredientsInput[];
+}
+
+export class IngredientsInput {
+    name: string;
+    quantity: string;
+    quantityType: string;
+    recipeId?: Nullable<number>;
 }
 
 export class Ingredient {
@@ -46,6 +54,8 @@ export abstract class IQuery {
 
 export abstract class IMutation {
     abstract createIngredient(createIngredientInput: CreateIngredientInput): Ingredient | Promise<Ingredient>;
+
+    abstract createIngredients(createIngrediensInput: CreateIngredientInput[]): Nullable<Ingredient>[] | Promise<Nullable<Ingredient>[]>;
 
     abstract updateIngredient(updateIngredientInput: UpdateIngredientInput): Ingredient | Promise<Ingredient>;
 

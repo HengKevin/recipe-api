@@ -16,6 +16,14 @@ export class IngredientResolver {
     return this.ingredientService.create(createIngredientInput);
   }
 
+  @Mutation('createIngredients')
+  createMany(
+    @Args('createIngredientInputs')
+    createIngredientInputs: CreateIngredientInput[],
+  ) {
+    return this.ingredientService.createMany(createIngredientInputs);
+  }
+
   @Query('ingredients')
   findAll() {
     return this.ingredientService.findAll();

@@ -9,6 +9,11 @@ export class RecipeService {
     return this.prisma.recipe.create({
       data: {
         ...createRecipeInput,
+        ingredients: {
+          createMany: {
+            data: [...createRecipeInput.ingredients],
+          },
+        },
       },
       include: { ingredients: true },
     });
