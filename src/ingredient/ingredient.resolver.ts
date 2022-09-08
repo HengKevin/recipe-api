@@ -1,8 +1,5 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-import {
-  CreateIngredientInput,
-  UpdateIngredientInput,
-} from 'src/types/graphql';
+import { CreateIngredientInput } from 'src/types/graphql';
 import { IngredientService } from './ingredient.service';
 
 @Resolver('Ingredient')
@@ -16,14 +13,6 @@ export class IngredientResolver {
     return this.ingredientService.create(createIngredientInput);
   }
 
-  @Mutation('createIngredients')
-  createMany(
-    @Args('createIngredientInputs')
-    createIngredientInputs: CreateIngredientInput[],
-  ) {
-    return this.ingredientService.createMany(createIngredientInputs);
-  }
-
   @Query('ingredients')
   findAll() {
     return this.ingredientService.findAll();
@@ -32,20 +21,5 @@ export class IngredientResolver {
   @Query('ingredient')
   findOne(@Args('id') id: number) {
     return this.ingredientService.findOne(id);
-  }
-
-  @Mutation('updateIngredient')
-  update(
-    @Args('updateIngredientInput') updateIngredientInput: UpdateIngredientInput,
-  ) {
-    return this.ingredientService.update(
-      updateIngredientInput.id,
-      updateIngredientInput,
-    );
-  }
-
-  @Mutation('removeIngredient')
-  remove(@Args('id') id: number) {
-    return this.ingredientService.remove(id);
   }
 }

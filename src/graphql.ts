@@ -55,10 +55,6 @@ export abstract class IQuery {
 export abstract class IMutation {
     abstract createIngredient(createIngredientInput: CreateIngredientInput): Ingredient | Promise<Ingredient>;
 
-    abstract createIngredients(createIngrediensInput: CreateIngredientInput[]): Nullable<Ingredient>[] | Promise<Nullable<Ingredient>[]>;
-
-    abstract updateIngredient(updateIngredientInput: UpdateIngredientInput): Ingredient | Promise<Ingredient>;
-
     abstract removeIngredient(id: number): Nullable<Ingredient> | Promise<Nullable<Ingredient>>;
 
     abstract createRecipe(createRecipeInput: CreateRecipeInput): Recipe | Promise<Recipe>;

@@ -5,8 +5,8 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class RecipeService {
   constructor(private prisma: PrismaService) {}
-  create(createRecipeInput: CreateRecipeInput) {
-    return this.prisma.recipe.create({
+  async create(createRecipeInput: CreateRecipeInput) {
+    return await this.prisma.recipe.create({
       data: {
         ...createRecipeInput,
         ingredients: {
@@ -19,21 +19,21 @@ export class RecipeService {
     });
   }
 
-  findAll() {
-    return this.prisma.recipe.findMany({
+  async findAll() {
+    return await this.prisma.recipe.findMany({
       include: { ingredients: true },
     });
   }
 
-  findOne(id: number) {
-    return this.prisma.recipe.findUnique({
+  async findOne(id: number) {
+    return await this.prisma.recipe.findUnique({
       where: { id },
       include: { ingredients: true },
     });
   }
 
-  remove(id: number) {
-    return this.prisma.recipe.delete({
+  async remove(id: number) {
+    return await this.prisma.recipe.delete({
       where: { id },
       include: { ingredients: true },
     });
